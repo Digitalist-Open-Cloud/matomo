@@ -1488,6 +1488,13 @@ class API extends \Piwik\Plugin\API
             throw new Exception("website id = $idSite not found");
         }
 
+        /**
+         * Triggered before a site has been updated.
+         *
+         * @param int $idSite The ID of the site that was updated.
+         */
+        Piwik::postEvent('SitesManager.updateSite.start', [$idSite]);
+
         // Build the SQL UPDATE based on specified updates to perform
         $bind = [];
 
@@ -1563,6 +1570,12 @@ class API extends \Piwik\Plugin\API
         }
 
         $this->postUpdateWebsite($idSite);
+        /**
+         * Triggered after a site has been updated.
+         *
+         * @param int $idSite The ID of the site that was updated.
+         */
+        Piwik::postEvent('SitesManager.updateSite.end', [$idSite]);
     }
 
     /**
