@@ -10,6 +10,19 @@ The Product Changelog at **[matomo.org/changelog](https://matomo.org/changelog)*
 
 * When requesting goals for multiple sites at once using `Goals.getGoals`, the result will no longer be indexed by `idgoal`. Requesting the goals for a single site will still return them indexed by `idgoal`.
 
+#### New APIs
+
+* The method `getNthLevelTableDimension` has been added to the `Report` class. This extends support for subtable reports for more than three levels.
+
+## Deprecations
+
+* The method `Report::getThirdLeveltableDimension` has been deprecated. Use `Report::getNthLevelTableDimension(2)` instead.
+
+### New commands
+
+* New command `core:reset-invalidations` allows administrators to reset stuck invalidations that are incorrectly marked as "in progress".
+
+
 ## Matomo 5.2.0
 
 ### Breaking Changes
